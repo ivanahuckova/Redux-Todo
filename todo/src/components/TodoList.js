@@ -1,10 +1,60 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import { addTodo } from '../actions/index';
 import { toggleCompleted } from '../actions/index';
 
 import './TodoList.css';
+
+const StyledEnvContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #dbe6f6;
+  background: linear-gradient(to right, #c5796d, #dbe6f6);
+`;
+
+const StyledTodoContainer = styled.div`
+  width: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+
+  h3 {
+    font-size: 3rem;
+    color: #c5796d;
+    padding: 0;
+  }
+
+  input {
+    margin: 30px 0;
+    line-height: 2;
+    border: 1px solid #c5796d;
+    border-radius: 5px;
+    padding: 4px 10px;
+    margin: 10px;
+
+    &:last-of-type {
+      border: none;
+      color: white;
+      background-color: #c5796d;
+      border-radius: 5px;
+      padding: 0 10px;
+      margin: 10px;
+      font-size: 1rem;
+    }
+  }
+  div {
+    margin: 5px 0;
+    font-size: 1.5rem;
+  }
+`;
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -16,29 +66,31 @@ class TodoList extends React.Component {
     console.log(this.props.toggleCompleted);
 
     return (
-      <div>
-        <h3>Todo List</h3>
-        {this.props.todos &&
-          this.props.todos.map(todo => {
-            return (
-              <div onClick={() => this.props.toggleCompleted(todo.id)} className={todo.completed ? 'line-through pointer' : 'pointer'} key={todo.id}>
-                {todo.value}
-              </div>
-            );
-          })}
+      <StyledEnvContainer>
+        <StyledTodoContainer>
+          <h3>Todo List</h3>
+          {this.props.todos &&
+            this.props.todos.map(todo => {
+              return (
+                <div onClick={() => this.props.toggleCompleted(todo.id)} className={todo.completed ? 'line-through pointer' : 'pointer'} key={todo.id}>
+                  {todo.value}
+                </div>
+              );
+            })}
 
-        <form>
-          <input placeholder="input your todo" ref={this.textRef} />
-          <input
-            type="submit"
-            onClick={event => {
-              event.preventDefault();
-              this.props.addTodo(this.textRef.current.value);
-              this.textRef.current.value = '';
-            }}
-          />
-        </form>
-      </div>
+          <form>
+            <input placeholder="input your todo" ref={this.textRef} />
+            <input
+              type="submit"
+              onClick={event => {
+                event.preventDefault();
+                this.props.addTodo(this.textRef.current.value);
+                this.textRef.current.value = '';
+              }}
+            />
+          </form>
+        </StyledTodoContainer>
+      </StyledEnvContainer>
     );
   }
 }
