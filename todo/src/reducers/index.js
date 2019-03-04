@@ -1,13 +1,16 @@
-import ADD_TODO from '../actions';
+import { ADD_TODO } from '../actions';
 
 const initialState = {
-  todos: []
+  todos: [{ text: 'write', completed: false }, { text: 'sing', completed: false }, { text: 'walk the dog', completed: false }]
 };
 
 export default function todoApp(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
-      return [...state.todos, { text: action.text, completed: false }];
+      return {
+        ...state,
+        todos: state.todos.concat({ text: `${action.text}`, completed: false })
+      };
     default:
       return state;
   }
