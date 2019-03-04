@@ -30,6 +30,7 @@ const StyledTodoContainer = styled.div`
     font-size: 3rem;
     color: #c5796d;
     padding: 0;
+    margin: 0 0 30px 0;
   }
 
   input {
@@ -37,8 +38,14 @@ const StyledTodoContainer = styled.div`
     line-height: 2;
     border: 1px solid #c5796d;
     border-radius: 5px;
-    padding: 4px 10px;
+    padding: 0 10px;
     margin: 10px;
+    color: #c5796d;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: #c5796d;
+    }
 
     &:last-of-type {
       border: none;
@@ -79,7 +86,7 @@ class TodoList extends React.Component {
             })}
 
           <form>
-            <input placeholder="input your todo" ref={this.textRef} />
+            <input placeholder="input your todo..." ref={this.textRef} />
             <input
               type="submit"
               onClick={event => {
