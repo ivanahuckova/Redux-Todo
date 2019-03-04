@@ -1,7 +1,7 @@
 import { ADD_TODO } from '../actions';
 
 const initialState = {
-  todos: [{ text: 'write', completed: false }, { text: 'sing', completed: false }, { text: 'walk the dog', completed: false }]
+  todos: [{ value: 'write', completed: false }, { value: 'sing', completed: false }, { value: 'walk the dog', completed: false }]
 };
 
 export default function todoApp(state = initialState, action) {
@@ -9,7 +9,7 @@ export default function todoApp(state = initialState, action) {
     case ADD_TODO:
       return {
         ...state,
-        todos: state.todos.concat({ text: `${action.text}`, completed: false })
+        todos: state.todos.concat({ text: `${action.value}`, completed: false })
       };
     default:
       return state;

@@ -16,7 +16,7 @@ class TodoList extends React.Component {
         <h3>Todo List</h3>
         {this.props.todos &&
           this.props.todos.map(todo => {
-            return <div key={todo.text}>{todo.text}</div>;
+            return <div key={todo.value}>{todo.value}</div>;
           })}
 
         <form>
