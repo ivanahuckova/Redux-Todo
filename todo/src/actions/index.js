@@ -1,8 +1,8 @@
 export const ADD_TODO = 'ADD_TODO';
 
-export default function addTodo(text) {
+export const addTodo = text => {
   return {
     type: ADD_TODO,
     text: text
   };
-}
+};
