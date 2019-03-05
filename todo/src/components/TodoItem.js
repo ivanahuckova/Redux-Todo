@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+//styled components
 const StyledTodoItem = styled.div`
   cursor: pointer;
   display: flex;
@@ -23,9 +24,11 @@ const StyledTodoItem = styled.div`
 export default function TodoItem(props) {
   return (
     <StyledTodoItem>
+      {/*todo item - when clicked directly - toggle completed status*/}
       <div onClick={() => props.toggleCompleted(props.todo.id)} className={props.todo.completed ? 'line-through' : ''}>
         {props.todo.value}
       </div>
+      {/*todo delete button - when clicked deletes todo*/}
       <div onClick={() => props.deleteTodo(props.todo.id)}>
         <span role="img" aria-label="delete button">
           ❌
