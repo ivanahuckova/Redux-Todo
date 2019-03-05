@@ -4,6 +4,7 @@ export const ADD_TODO = 'ADD_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
 export const DELETE_COMPLETED = 'DELETE_COMPLETED';
+export const FILTER_TODOS = 'FILTER_TODOS';
 
 export const addTodo = value => {
   return {
@@ -33,5 +34,12 @@ export const toggleCompleted = index => {
 export const deleteCompleted = () => {
   return {
     type: DELETE_COMPLETED
+  };
+};
+
+export const filterTodo = text => {
+  return {
+    type: FILTER_TODOS,
+    text
   };
 };

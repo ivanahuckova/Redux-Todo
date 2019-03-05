@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, TOGGLE_COMPLETED, DELETE_COMPLETED } from '../actions';
+import { ADD_TODO, DELETE_TODO, TOGGLE_COMPLETED, DELETE_COMPLETED, FILTER_TODOS } from '../actions';
 import uuid from 'uuid';
 
 const initialState = {
@@ -43,6 +43,13 @@ export default function todoApp(state = initialState, action) {
       return {
         ...state,
         todos: state.todos.filter(todo => todo.completed === false)
+      };
+
+    //filter todos
+    case FILTER_TODOS:
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo.value.indexOf(action.text) !== -1)
       };
 
     //default
