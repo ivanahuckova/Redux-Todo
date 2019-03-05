@@ -64,14 +64,9 @@ const StyledTodoContainer = styled.div`
 `;
 
 class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.textRef = React.createRef();
-  }
+  textRef = React.createRef();
 
   render() {
-    console.log(this.props.toggleCompleted);
-
     return (
       <StyledEnvContainer>
         <StyledTodoContainer>
