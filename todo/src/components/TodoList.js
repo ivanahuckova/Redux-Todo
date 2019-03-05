@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { addTodo } from '../actions/index';
 import { toggleCompleted } from '../actions/index';
 
+import TodoItem from './TodoItem';
+
 import './TodoList.css';
 
 const StyledEnvContainer = styled.div`
@@ -73,11 +75,7 @@ class TodoList extends React.Component {
           <h3>Todo List</h3>
           {this.props.todos &&
             this.props.todos.map(todo => {
-              return (
-                <div onClick={() => this.props.toggleCompleted(todo.id)} className={todo.completed ? 'line-through pointer' : 'pointer'} key={todo.id}>
-                  {todo.value}
-                </div>
-              );
+              return <TodoItem todo={todo} toggleCompleted={this.props.toggleCompleted} key={todo.id} />;
             })}
 
           <form>
