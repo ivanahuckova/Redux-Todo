@@ -10,21 +10,25 @@ const StyledTodoItem = styled.div`
     text-decoration: line-through;
   }
 
-  button {
+  span {
     margin-left: 10px;
     padding: 5px;
     cursor: pointer;
+    font-size: 0.9rem;
   }
 `;
 
 export default function TodoItem(props) {
   return (
     <StyledTodoItem>
-      {' '}
       <div onClick={() => props.toggleCompleted(props.todo.id)} className={props.todo.completed ? 'line-through' : ''}>
         {props.todo.value}
       </div>
-      <button onClick={() => props.deleteTodo(props.todo.id)}>delete</button>
+      <div onClick={() => props.deleteTodo(props.todo.id)}>
+        <span role="img" aria-label="delete button">
+          ❌
+        </span>
+      </div>
     </StyledTodoItem>
   );
 }
