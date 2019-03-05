@@ -5,18 +5,14 @@ import { addTodo, deleteTodo, toggleCompleted, deleteCompleted } from '../action
 
 import TodoItem from './TodoItem';
 
-class TodoList extends React.Component {
-  textRef = React.createRef();
-
-  render() {
-    return (
-      <div>
-        {this.props.todos.map(todo => {
-          return <TodoItem todo={todo} toggleCompleted={this.props.toggleCompleted} deleteTodo={this.props.deleteTodo} key={todo.id} />;
-        })}
-      </div>
-    );
-  }
+function TodoList(props) {
+  return (
+    <div>
+      {props.todos.map(todo => {
+        return <TodoItem todo={todo} toggleCompleted={props.toggleCompleted} deleteTodo={props.deleteTodo} key={todo.id} />;
+      })}
+    </div>
+  );
 }
 
 //Redux

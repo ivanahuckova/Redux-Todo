@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+
 import { addTodo, deleteCompleted } from '../actions/index';
 
 //import styled components
 import Button from './partial_components/Button';
 import Input from './partial_components/Input';
 
-export class TodoForm extends React.Component {
+class TodoForm extends React.Component {
   textRef = React.createRef();
+
   render() {
     return (
       <form>
@@ -22,7 +23,8 @@ export class TodoForm extends React.Component {
           Submit
         </Button>
         <Button
-          onClick={() => {
+          onClick={event => {
+            event.preventDefault();
             this.props.deleteCompleted();
           }}>
           Delete completed
@@ -34,23 +36,13 @@ export class TodoForm extends React.Component {
 
 //redux
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     todos: state.todos
   };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    {
-      addTodo,
-      deleteCompleted
-    },
-    dispatch
-  );
-}
+};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { addTodo, deleteCompleted }
 )(TodoForm);

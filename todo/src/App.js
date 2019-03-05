@@ -4,7 +4,7 @@ import styled from 'styled-components';
 //components
 import TodoList from './components/TodoList';
 import FilterTodo from './components/FilterTodo';
-import { TodoForm } from './components/TodoForm';
+import TodoForm from './components/TodoForm';
 
 //import styled components
 import MainHeading from './components/partial_components/MainHeading';

@@ -28,6 +28,7 @@ export default function TodoItem(props) {
       <div onClick={() => props.toggleCompleted(props.todo.id)} className={props.todo.completed ? 'line-through' : ''}>
         {props.todo.value}
       </div>
+
       {/*todo delete button - when clicked deletes todo*/}
       <div onClick={() => props.deleteTodo(props.todo.id)}>
         <span role="img" aria-label="delete button">
