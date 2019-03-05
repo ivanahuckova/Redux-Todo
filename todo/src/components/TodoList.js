@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { addTodo, deleteTodo, toggleCompleted } from '../actions/index';
+import { addTodo, deleteTodo, toggleCompleted, deleteCompleted } from '../actions/index';
 
 import TodoItem from './TodoItem';
 
@@ -19,7 +19,7 @@ const StyledEnvContainer = styled.div`
 `;
 
 const StyledTodoContainer = styled.div`
-  width: 50%;
+  width: 60%;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -58,10 +58,18 @@ const StyledTodoContainer = styled.div`
       font-size: 1rem;
     }
   }
-  div {
-    margin: 5px 0;
-    font-size: 1.5rem;
-  }
+`;
+
+const StyledButton = styled.div`
+  border: none;
+  color: white;
+  background-color: #c5796d;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0;
+  line-height: 2;
+  text-align: center;
+  cursor: pointer;
 `;
 
 class TodoList extends React.Component {
@@ -87,6 +95,12 @@ class TodoList extends React.Component {
                 this.textRef.current.value = '';
               }}
             />
+            <StyledButton
+              onClick={() => {
+                this.props.deleteCompleted();
+              }}>
+              Delete completed
+            </StyledButton>
           </form>
         </StyledTodoContainer>
       </StyledEnvContainer>
@@ -102,5 +116,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addTodo, deleteTodo, toggleCompleted }
+  { addTodo, deleteTodo, toggleCompleted, deleteCompleted }
 )(TodoList);

@@ -5,6 +5,8 @@ const StyledTodoItem = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+  margin: 5px 0;
+  font-size: 1.5rem;
 
   .line-through {
     text-decoration: line-through;
