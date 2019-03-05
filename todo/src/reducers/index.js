@@ -8,7 +8,7 @@ const initialState = {
 export default function todoApp(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
-      const updatedTodos = state.todos.concat({ id: uuid(), value: `${action.value}`, completed: false });
+      const updatedTodos = state.todos.concat({ id: action.payload.id, value: `${action.payload.value}`, completed: action.payload.completed });
       return {
         ...state,
         todos: updatedTodos
@@ -24,7 +24,6 @@ export default function todoApp(state = initialState, action) {
 
         return todo;
       });
-      console.log(newTodos);
 
       return {
         ...state,
