@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_COMPLETED } from '../actions';
+import { ADD_TODO, DELETE_TODO, TOGGLE_COMPLETED } from '../actions';
 import uuid from 'uuid';
 
 const initialState = {
@@ -7,12 +7,22 @@ const initialState = {
 
 export default function todoApp(state = initialState, action) {
   switch (action.type) {
+    //add todo
     case ADD_TODO:
       const updatedTodos = state.todos.concat({ id: action.payload.id, value: `${action.payload.value}`, completed: action.payload.completed });
       return {
         ...state,
         todos: updatedTodos
       };
+
+    //delete todo
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo.id !== action.payload)
+      };
+
+    //toggle completed
     case TOGGLE_COMPLETED:
       const newTodos = state.todos.map(todo => {
         if (todo.id === action.index) {
@@ -21,7 +31,6 @@ export default function todoApp(state = initialState, action) {
             completed: !todo.completed
           };
         }
-
         return todo;
       });
 
@@ -29,6 +38,8 @@ export default function todoApp(state = initialState, action) {
         ...state,
         todos: newTodos
       };
+
+    //default
     default:
       return state;
   }

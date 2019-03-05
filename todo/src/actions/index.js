@@ -1,6 +1,7 @@
 import uuid from 'uuid';
 
 export const ADD_TODO = 'ADD_TODO';
+export const DELETE_TODO = 'DELETE_TODO';
 export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
 
 export const addTodo = value => {
@@ -11,6 +12,13 @@ export const addTodo = value => {
       value,
       completed: false
     }
+  };
+};
+
+export const deleteTodo = id => {
+  return {
+    type: DELETE_TODO,
+    payload: id
   };
 };
 

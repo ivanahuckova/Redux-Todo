@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { addTodo } from '../actions/index';
-import { toggleCompleted } from '../actions/index';
+import { addTodo, deleteTodo, toggleCompleted } from '../actions/index';
 
 import TodoItem from './TodoItem';
 
@@ -75,7 +74,7 @@ class TodoList extends React.Component {
           <h3>Todo List</h3>
           {this.props.todos &&
             this.props.todos.map(todo => {
-              return <TodoItem todo={todo} toggleCompleted={this.props.toggleCompleted} key={todo.id} />;
+              return <TodoItem todo={todo} toggleCompleted={this.props.toggleCompleted} deleteTodo={this.props.deleteTodo} key={todo.id} />;
             })}
 
           <form>
@@ -103,5 +102,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addTodo, toggleCompleted }
+  { addTodo, deleteTodo, toggleCompleted }
 )(TodoList);
