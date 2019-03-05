@@ -2,7 +2,8 @@ import { ADD_TODO, DELETE_TODO, TOGGLE_COMPLETED, DELETE_COMPLETED, FILTER_TODOS
 import uuid from 'uuid';
 
 const initialState = {
-  todos: [{ id: uuid(), value: 'write', completed: false }, { id: uuid(), value: 'sing', completed: false }, { id: uuid(), value: 'walk the dog', completed: false }]
+  todos: [{ id: uuid(), value: 'write', completed: false }, { id: uuid(), value: 'sing', completed: false }, { id: uuid(), value: 'walk the dog', completed: false }],
+  filterValue: ''
 };
 
 export default function todoApp(state = initialState, action) {
@@ -49,7 +50,7 @@ export default function todoApp(state = initialState, action) {
     case FILTER_TODOS:
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.value.indexOf(action.text) !== -1)
+        filterValue: action.text
       };
 
     //default

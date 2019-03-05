@@ -12,7 +12,13 @@ class FilterTodo extends React.Component {
   render() {
     return (
       <form>
-        <Input placeholder="filter your todos..." ref={this.textRef} />
+        <Input
+          placeholder="filter your todos..."
+          ref={this.textRef}
+          onChange={() => {
+            this.props.filterTodo(this.textRef.current.value);
+          }}
+        />
         <Button
           onClick={event => {
             event.preventDefault();

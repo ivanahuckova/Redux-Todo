@@ -8,9 +8,11 @@ import TodoItem from './TodoItem';
 function TodoList(props) {
   return (
     <div>
-      {props.todos.map(todo => {
-        return <TodoItem todo={todo} toggleCompleted={props.toggleCompleted} deleteTodo={props.deleteTodo} key={todo.id} />;
-      })}
+      {props.todos
+        .filter(todo => todo.value.indexOf(props.filterValue) !== -1)
+        .map(todo => {
+          return <TodoItem todo={todo} toggleCompleted={props.toggleCompleted} deleteTodo={props.deleteTodo} key={todo.id} />;
+        })}
     </div>
   );
 }
@@ -18,7 +20,8 @@ function TodoList(props) {
 //Redux
 const mapStateToProps = state => {
   return {
-    todos: state.todos
+    todos: state.todos,
+    filterValue: state.filterValue
   };
 };
 
